@@ -1,0 +1,21 @@
+{
+  "threads": 100,
+  "body": {
+    "name": "Pen",
+    "price": 1.5,
+    "quantity": 1
+  },
+  "expect_items": 100,
+  "expect_distinct_ids": 100,
+  "reader": {
+    "threads": 1,
+    "runs_beside_adders": true,
+    "expect_every_seen_item_keys": [
+      "id",
+      "name",
+      "price",
+      "quantity"
+    ],
+    "expect_list_all_returns_new_list": true
+  }
+}

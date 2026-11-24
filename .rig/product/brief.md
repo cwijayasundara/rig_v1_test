@@ -1,35 +1,41 @@
 # Product brief
 
-<!-- rig reads this file as .rig/product/brief.md. In a charted repo the architect fills it: Architecture points to architecture.md, and Behaviours, Failure behaviour and Tests required say "see the intents" (B-numbers are per intent). With no chart, write them here: number each behaviour (B-numbers); every one needs a test whose name or comment says its number. -->
-
 ## Context and intent
 
-<!-- Who this is for, the problem, and what success looks like. -->
+A small FastAPI service holds one shopping cart in memory. A developer or script adds items with POST /items, fetches one with GET /items/{id} and lists all with GET /items. Success: the PRD's three scenarios work with curl and `uv run pytest -q`, `ruff check .` and `mypy .` pass. Greenfield; nothing depends on it.
 
 ## Non-goals
 
-<!-- Phrase each as a prohibition, for example: "Do not add operations not listed under Interfaces." -->
+- Do not add authentication, users or multiple carts: one cart per running process.
+- Do not add update or delete of items (delete arrives in sprint 1).
+- Do not add checkout, payment, tax, discounts, totals or currency handling.
+- Do not add persistence: a restart empties the cart.
+- Do not add a UI, pagination, filtering or sorting options.
+- Do not add endpoints the PRD does not list.
 
 ## Architecture
 
-<!-- Charted: point to architecture.md, do not retype it. No chart: the parts, where they run, and which way dependencies point, then a table: | Part | Responsibility | Must not |. -->
+See `.rig/product/architecture.md` (modules, flows, quality tactics) and `.rig/product/adr/` (ADR-0001, the item id format).
 
 ## Constraints
 
-<!-- Language, runtime, data, security and performance limits. -->
+- Python 3.12, FastAPI on uvicorn, uv, pytest (TestClient, httpx), ruff, mypy.
+- Business logic in `store.py` and `models.py`, never in route functions; price is `decimal.Decimal`, never float.
+- Ask first before adding a runtime dependency beyond fastapi and uvicorn, or changing a response shape.
+- NFR-1: 100 concurrent adds leave exactly 100 items with 100 distinct ids. NFR-2: 0 errors from ruff and mypy.
 
 ## Interfaces
 
-<!-- Each public surface and its contract file, for example api/openapi.yaml with examples. -->
+- `POST /items` (201), `GET /items/{id}` (200, 404), `GET /items` (200); errors are `{"error", "message"}` with 400 `validation_error` (never 422) and 404 `not_found`. The PRD's Examples section fixes the shapes; no contract file.
 
 ## Behaviours
 
-<!-- Charted: see the intents. No chart: - B<n>: one observable behaviour, stated from outside the system -->
+see the intents
 
 ### Failure behaviour
 
-<!-- Charted: see the intents. No chart: resiliency rules, each a B-number with exact statuses and numbers: deferred work, throttling, invalid downstream responses, and the timeout default. -->
+see the intents
 
 ## Tests required
 
-<!-- Charted: see the intents. No chart: per behaviour, the level (unit, contract, end-to-end) and the file that will hold it. -->
+see the intents

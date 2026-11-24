@@ -1,0 +1,14 @@
+{
+  "bodies": [
+    {
+      "name": "Tea",
+      "price": 3,
+      "quantity": 1
+    },
+    {
+      "name": "Tea",
+      "price": 3,
+      "quantity": 1
+    }
+  ]
+}

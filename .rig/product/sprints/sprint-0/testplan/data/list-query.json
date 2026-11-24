@@ -1,0 +1,18 @@
+{
+  "bodies": [
+    {
+      "name": "Tea",
+      "price": 3,
+      "quantity": 1
+    },
+    {
+      "name": "Apples",
+      "price": 1.25,
+      "quantity": 6
+    }
+  ],
+  "queries": [
+    "?limit=1",
+    "?sort=name"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "raw": [
+    "{\"name\":\"  Coffee  beans \",\"price\":8.5,\"quantity\":2}"
+  ],
+  "expected_name": "Coffee  beans"
+}
