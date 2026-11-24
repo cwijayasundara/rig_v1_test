@@ -1,6 +1,6 @@
 ---
 sprint: 0
-status: proposed
+status: accepted
 ---
 # ADR-0001: Item ids are server-generated UUID version 4 strings
 

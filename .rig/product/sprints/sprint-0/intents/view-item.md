@@ -5,7 +5,7 @@ depends: [add-item]
 estimate_days: 1
 kind: internal
 owner:
-status: draft
+status: approved
 scope: [src/cart/store.py, src/cart/errors.py, src/cart/main.py, tests/test_view_item.py]
 touches: []
 ---

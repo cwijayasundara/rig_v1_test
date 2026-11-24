@@ -1,0 +1,168 @@
+{
+  "by": "cwijayasundaragmail.com",
+  "at": "2026-11-24T09:54:42.658Z",
+  "digest": "af0855393dc412c7",
+  "files": [
+    {
+      "path": ".rig/product/adr/0001-item-id-uuid4.md",
+      "sha": "5c9381511ec10e6d"
+    },
+    {
+      "path": ".rig/product/architecture.md",
+      "sha": "d411641850852c9f"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/approval.md",
+      "sha": "9065be26ec4ead3c"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/coverage.md",
+      "sha": "dcae863fe7ed702b"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/holdout_boot.py",
+      "sha": "d73cefc1b7f76a6d"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/test_tc_18_holdout.py",
+      "sha": "e7e8a3b5ab5eea99"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/test_tc_19_holdout.py",
+      "sha": "d0891067a3d0605c"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/test_tc_1_holdout.py",
+      "sha": "b2b78d4eff1fe486"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/test_tc_20_holdout.py",
+      "sha": "e880a0e3d767887c"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/holdout/test_tc_26_holdout.py",
+      "sha": "8ac1d0bf5399f396"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/implementation-plan.md",
+      "sha": "1ae2fc1a40254649"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/intents/add-item.md",
+      "sha": "70a14e533dda5fca"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/intents/list-items.md",
+      "sha": "41bb29436ba5fe26"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/intents/view-item.md",
+      "sha": "e1cc1aa50d4cca9c"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/prd.md",
+      "sha": "26035f6199929ed7"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/requirements.md",
+      "sha": "daa322664b282d97"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/source.md",
+      "sha": "ee1b76be20fc3564"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/cases.md",
+      "sha": "ceabe574f41e91d7"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/add-extra-fields.json",
+      "sha": "8d16307295b6b7e5"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/add-identical.json",
+      "sha": "3b525d24de2d1976"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/add-valid.json",
+      "sha": "0c5b8ad65e40f1f7"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/body-invalid.json",
+      "sha": "cd6b0203c280896c"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/concurrent.json",
+      "sha": "18e4a2f69414d507"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/list-empty.json",
+      "sha": "703945494f9f5b96"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/list-query.json",
+      "sha": "26838328eb8a31ef"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/list-two.json",
+      "sha": "0c163879e38c8317"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/messages.json",
+      "sha": "a32f3deea2b87c77"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/name-invalid.json",
+      "sha": "15df611c1cdb7229"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/name-trim.json",
+      "sha": "0e09833e7ec53e7d"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/price-invalid.json",
+      "sha": "b434f0e192af07a7"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/price-values.json",
+      "sha": "cf88eaa8459d3e33"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/quantity-invalid.json",
+      "sha": "21cd9fb3abaafde5"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/quantity-large.json",
+      "sha": "66fcde6d0d91d3a3"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/store-ids.json",
+      "sha": "58df61300a437689"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/view-case.json",
+      "sha": "914a1b44037dcdc6"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/view-known.json",
+      "sha": "467328816f18c977"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/view-store.json",
+      "sha": "7078d74145c8e042"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/data/view-unknown.json",
+      "sha": "ec68b8e63fabf2ad"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/testplan/plan.md",
+      "sha": "9aca308a02d0d6a4"
+    },
+    {
+      "path": ".rig/product/sprints/sprint-0/waivers.json",
+      "sha": "9eeee9f69ada8888"
+    }
+  ],
+  "answers": []
+}

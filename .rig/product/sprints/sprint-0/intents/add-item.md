@@ -5,7 +5,7 @@ depends: []
 estimate_days: 2
 kind: internal
 owner:
-status: draft
+status: approved
 scope: [src/cart/models.py, src/cart/store.py, src/cart/errors.py, src/cart/main.py, tests/conftest.py, tests/test_add_item.py, tests/test_store.py]
 touches: []
 ---

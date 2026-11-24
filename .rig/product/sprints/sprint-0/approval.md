@@ -112,7 +112,7 @@ Nothing to answer: these are the points most worth a look before you decide appr
 - escalation: n/a — no hand-off to a person; a client script calls the API
 - rollout: proposed — runs locally with `uv run uvicorn cart.main:app --port 8000`; no deploy, monitoring or rollback is defined (the source excludes Docker, CI and hosting)
 - accuracy, autonomy, fallback, budget, audit: n/a — no model, agent or classifier in this product
-- finding 1: [severity: high] [category: weakened] .rig/product/architecture.md:84 and .rig/product/sprints/sprint-0/intents/add-item.md:79: the source says "Every error... (not confirmed)
+- finding 1: [severity: high] [category: weakened] .rig/product/architecture.md:84 and .rig/product/sprints/sprint-0/intents/add-item.md:79: the source says "Every error... (waived by cwijayasundaragmail.com: framework 404/405 defaults are acceptable for sprint 0)
 - finding 2: [severity: high] [category: cases] .rig/product/sprints/sprint-0/holdout/test_tc_18_holdout.py:17: this add-item holdout checks "stores nothing" through `GET... (tier S: fixed, never confirmed; read the fix)
 
 ## Decisions
