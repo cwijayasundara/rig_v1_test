@@ -1,10 +1,10 @@
 from collections.abc import Iterator
 
 import pytest
-from cart.store import CartStore
 from fastapi.testclient import TestClient
 
 import cart.main
+from cart.store import CartStore
 
 
 @pytest.fixture
