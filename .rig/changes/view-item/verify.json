@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-24T10:25:56.415Z",
+  "from": "2026-11-24T10:24:40.824Z",
+  "tree": "d8ca76d4cc0a9bb4",
+  "base": "3e85935ef454868b15aff77caea1e155e83dd32e",
+  "pass": true,
+  "blocks": [],
+  "holdout": {
+    "passed": 2,
+    "total": 2
+  }
+}

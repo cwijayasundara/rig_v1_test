@@ -18,3 +18,8 @@ def add_item(body: ItemCreate) -> Item:
 @app.get("/items")
 def list_items() -> list[dict[str, object]]:
     return []
+
+
+@app.get("/items/{item_id}")
+def get_item(item_id: str) -> Item:
+    return store.get(item_id)

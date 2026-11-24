@@ -2,42 +2,47 @@
 
 > The application entry point and its endpoints: routing, request/response handling, and how errors are surfaced to clients.
 
-## Application
+## Application setup
 
-The module `src/cart/main.py` creates a FastAPI application titled "Shopping Cart API". [src/cart/main.py]
-The module calls `register_error_handlers` on the application at import time. [src/cart/main.py]
-The module creates a single `CartStore` instance at module level, and the handlers share it. [src/cart/main.py]
-The package `src/cart/__init__.py` is an empty file. [src/cart/__init__.py]
+The module `cart.main` creates a FastAPI application titled "Shopping Cart API". [src/cart/main.py]
+The module calls `register_error_handlers` with the application right after creating it. [src/cart/main.py]
+A single module-level `CartStore` instance named `store` is shared by all request handlers. [src/cart/main.py]
 
 ## Endpoints
 
+`add_item` handles `POST /items`. [src/cart/main.py#add_item]
+`list_items` handles `GET /items`. [src/cart/main.py#list_items]
+`get_item` handles `GET /items/{item_id}`. [src/cart/main.py#get_item]
+
 ### POST /items
 
-The `add_item` handler is registered for `POST /items` with status code 201. [src/cart/main.py#add_item]
-It accepts a request body validated as `ItemCreate`. [src/cart/main.py#add_item]
-It calls `add` on the shared store with the body's `name`, `price` and `quantity`. [src/cart/main.py#add_item]
-It returns the `Item` produced by the store. [src/cart/main.py#add_item]
+`add_item` accepts a request body validated as `ItemCreate`. [src/cart/main.py#add_item]
+`add_item` responds with HTTP status 201. [src/cart/main.py#add_item]
+`add_item` passes the body's name, price and quantity to `store.add`. [src/cart/main.py#add_item]
+`add_item` returns the `Item` produced by `store.add`. [src/cart/main.py#add_item]
 
 ### GET /items
 
-The `list_items` handler is registered for `GET /items`. [src/cart/main.py#list_items]
-It takes no parameters. [src/cart/main.py#list_items]
-It always returns an empty list. [src/cart/main.py#list_items]
-It does not read from the store. [src/cart/main.py#list_items]
-Items added through `POST /items` therefore do not appear in its response. [src/cart/main.py#list_items]
+`list_items` is declared to return a list of dictionaries mapping strings to objects. [src/cart/main.py#list_items]
+`list_items` currently returns an empty list without reading the store. [src/cart/main.py#list_items]
+
+### GET /items/{item_id}
+
+`get_item` takes `item_id` from the path as a string. [src/cart/main.py#get_item]
+`get_item` returns the `Item` produced by `store.get` for that identifier. [src/cart/main.py#get_item]
 
 ## Error handling
 
-The application gets its error handlers from `register_error_handlers`, imported from `cart.errors`. [src/cart/main.py]
-This page does not describe what those handlers do, because `cart.errors` is not among the supplied sources. [src/cart/main.py]
+Error responses are configured by `register_error_handlers`, which is invoked once at import time. [src/cart/main.py]
 
 ## Request flow
 
 ```mermaid
-flowchart LR %% [src/cart/main.py]
-    Client[Client] -->|POST /items| AddItem[add_item] %% [src/cart/main.py#add_item]
-    AddItem -->|name, price, quantity| Store[CartStore.add] %% [src/cart/main.py#add_item]
-    Store -->|Item, 201| Client %% [src/cart/main.py#add_item]
-    Client2[Client] -->|GET /items| ListItems[list_items] %% [src/cart/main.py#list_items]
-    ListItems -->|empty list| Client2 %% [src/cart/main.py#list_items]
+flowchart LR
+    Client[Client] --> App[FastAPI app] %% [src/cart/main.py]
+    App --> Add[add_item POST /items] %% [src/cart/main.py#add_item]
+    App --> List[list_items GET /items] %% [src/cart/main.py#list_items]
+    App --> Get[get_item GET /items/item_id] %% [src/cart/main.py#get_item]
+    Add --> Store[(CartStore store)] %% [src/cart/main.py]
+    Get --> Store %% [src/cart/main.py]
 ```
