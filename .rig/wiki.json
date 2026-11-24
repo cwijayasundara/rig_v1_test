@@ -1,0 +1,95 @@
+{
+  "origin": "sync",
+  "pages": [
+    {
+      "title": "Cart Service Overview",
+      "purpose": "High-level introduction to the cart package: what it does, how the modules fit together, and how a request flows from API to store.",
+      "paths": [
+        "src/cart/__init__.py",
+        "src/cart/main.py",
+        "src/cart/models.py",
+        "src/cart/store.py",
+        "src/cart/errors.py"
+      ]
+    },
+    {
+      "title": "HTTP API",
+      "purpose": "The application entry point and its endpoints: routing, request/response handling, and how errors are surfaced to clients.",
+      "parent": "Cart Service Overview",
+      "paths": [
+        "src/cart/main.py",
+        "src/cart/__init__.py"
+      ]
+    },
+    {
+      "title": "Domain Models",
+      "purpose": "Data models for carts and items: fields, validation rules, and how they are used across the service.",
+      "parent": "Cart Service Overview",
+      "paths": [
+        "src/cart/models.py"
+      ]
+    },
+    {
+      "title": "Cart Store",
+      "purpose": "Storage layer that holds cart state and implements item operations; persistence semantics and invariants.",
+      "parent": "Cart Service Overview",
+      "paths": [
+        "src/cart/store.py"
+      ]
+    },
+    {
+      "title": "Error Handling",
+      "purpose": "Custom exception types and how they map to API responses.",
+      "parent": "Cart Service Overview",
+      "paths": [
+        "src/cart/errors.py",
+        "src/cart/main.py"
+      ]
+    },
+    {
+      "title": "Add Item Flow",
+      "purpose": "End-to-end walkthrough of adding an item to a cart: API call, validation, store mutation, and error cases.",
+      "parent": "Cart Service Overview",
+      "paths": [
+        "src/cart/main.py",
+        "src/cart/models.py",
+        "src/cart/store.py",
+        "src/cart/errors.py",
+        "tests/test_add_item.py"
+      ]
+    },
+    {
+      "title": "Testing Guide",
+      "purpose": "How the test suite is organized, shared fixtures, and how to run and extend tests.",
+      "paths": [
+        "tests/"
+      ]
+    },
+    {
+      "title": "API Tests",
+      "purpose": "Tests that exercise the HTTP endpoints and response contracts.",
+      "parent": "Testing Guide",
+      "paths": [
+        "tests/test_api.py",
+        "tests/conftest.py"
+      ]
+    },
+    {
+      "title": "Store Tests",
+      "purpose": "Unit tests for the cart store behavior and invariants.",
+      "parent": "Testing Guide",
+      "paths": [
+        "tests/test_store.py",
+        "tests/conftest.py"
+      ]
+    },
+    {
+      "title": "Add Item Tests",
+      "purpose": "Frozen acceptance tests for the add-item feature and the behaviors they pin down.",
+      "parent": "Testing Guide",
+      "paths": [
+        "tests/test_add_item.py"
+      ]
+    }
+  ]
+}

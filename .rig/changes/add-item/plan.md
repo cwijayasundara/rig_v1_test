@@ -9,9 +9,9 @@
 - tests/test_add_item.py, tests/test_store.py (new)
 
 ## Phases
-- [ ] Phase 1: store and models. Failing unit tests first and seen red, then `Item` and `CartStore` (B4, B6, B9, B10); verify with `uv run pytest tests/test_store.py`
-- [ ] Phase 2: happy path. Conftest fixture and failing end-to-end tests first and seen red, then `ItemCreate` and `POST /items` 201 (B1, B2, B3, B5, B6, B7, B8); verify with `uv run pytest tests/test_add_item.py`
-- [ ] Phase 3: rejection. Failing tests first and seen red, then validators and the 400 handler (B12 to B18); verify with the full suite, ruff and mypy
+- [x] Phase 1: store and models. Failing unit tests first and seen red, then `Item` and `CartStore` (B4, B6, B9, B10); verify with `uv run pytest tests/test_store.py`
+- [x] Phase 2: happy path. Conftest fixture and failing end-to-end tests first and seen red, then `ItemCreate` and `POST /items` 201 (B1, B2, B3, B5, B6, B7, B8); verify with `uv run pytest tests/test_add_item.py`
+- [x] Phase 3: rejection. Failing tests first and seen red, then validators and the 400 handler (B12 to B18); verify with the full suite, ruff and mypy
 
 ## Interfaces
 Design rows of the intent (`## Design` in the charted intent) are the contract; signatures:

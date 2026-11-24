@@ -1,0 +1,151 @@
+{
+  "pages": {
+    "cart-service-overview": {
+      "builtAt": "991098f",
+      "hashes": {
+        "src/cart/__init__.py": "e3b0c44298fc1c14",
+        "src/cart/main.py": "a3f2548468c3674d",
+        "src/cart/models.py": "0b178c61ea8b10a1",
+        "src/cart/store.py#CartStore": "9b9ffc7de242b61c",
+        "src/cart/errors.py#register_error_handlers": "3c03d23598b634ee",
+        "src/cart/main.py#add_item": "cd8d82e9d3144776",
+        "src/cart/main.py#list_items": "24971304a073eeb1",
+        "src/cart/models.py#ItemCreate": "fc788fc81c382940",
+        "src/cart/models.py#_reject_non_numbers": "3a94d84b664f3f00",
+        "src/cart/models.py#Item": "eafb27abcf02ddb9",
+        "src/cart/store.py#CartStore.add": "1871a3b2699c2d8e",
+        "src/cart/store.py#CartStore.list_all": "f477fb13de38db67",
+        "src/cart/errors.py": "dba00b4f636c8638"
+      },
+      "sources": [
+        "src/cart/errors.py",
+        "src/cart/models.py",
+        "src/cart/store.py",
+        "src/cart/__init__.py",
+        "src/cart/main.py"
+      ]
+    },
+    "http-api": {
+      "builtAt": "991098f",
+      "hashes": {
+        "src/cart/main.py": "a3f2548468c3674d",
+        "src/cart/__init__.py": "e3b0c44298fc1c14",
+        "src/cart/main.py#add_item": "cd8d82e9d3144776",
+        "src/cart/main.py#list_items": "24971304a073eeb1"
+      },
+      "sources": [
+        "src/cart/__init__.py",
+        "src/cart/main.py"
+      ]
+    },
+    "domain-models": {
+      "builtAt": "991098f",
+      "hashes": {
+        "src/cart/models.py": "0b178c61ea8b10a1",
+        "src/cart/models.py#ItemCreate": "fc788fc81c382940",
+        "src/cart/models.py#Item": "eafb27abcf02ddb9",
+        "src/cart/models.py#_reject_non_numbers": "3a94d84b664f3f00"
+      },
+      "sources": [
+        "src/cart/models.py"
+      ]
+    },
+    "api-tests": {
+      "builtAt": "991098f",
+      "hashes": {
+        "tests/test_api.py": "551b67c8508482f2",
+        "tests/test_api.py#test_smoke_empty_cart_lists_nothing": "7bc06c9daa29543b",
+        "tests/conftest.py#client": "3ad15488bb6ee3e6"
+      },
+      "sources": [
+        "tests/conftest.py",
+        "tests/test_api.py"
+      ]
+    },
+    "store-tests": {
+      "builtAt": "991098f",
+      "hashes": {
+        "tests/conftest.py#client": "3ad15488bb6ee3e6",
+        "tests/test_store.py": "aace11e0791a04c8",
+        "tests/test_store.py#test_b4_dr_2_id_is_canonical_uuid4": "2e2421a5890fcca3",
+        "tests/test_store.py#test_b4_dr_2_ids_are_distinct_across_adds": "7145a06ee504fc7f",
+        "tests/test_store.py#test_b4_dr_2_client_cannot_supply_an_id": "33afe7ca38053124",
+        "tests/test_store.py#test_b4_returned_item_is_the_stored_item": "842e9cd2edb5b335",
+        "tests/test_store.py#test_b6_dr_4_price_is_stored_as_decimal": "664cebc794ad7b62",
+        "tests/test_store.py#test_list_all_is_oldest_first": "4003778f72a4dcc4",
+        "tests/test_store.py#test_b10_nfr_1_list_all_returns_a_copy": "63a930a6feba69bc",
+        "tests/test_store.py#test_b10_nfr_1_snapshot_is_unaffected_by_later_adds": "e9c21776871dfb78",
+        "tests/test_store.py#test_b9_nfr_1_hundred_concurrent_adds_lose_nothing": "65a92aa96f7dc097",
+        "tests/test_store.py#test_b10_nfr_1_readers_never_see_a_half_added_item": "0bffefd84df360fa",
+        "tests/test_store.py#RecordingLock": "3cbf863fcd84947b",
+        "tests/test_store.py#RecordingLock.__enter__": "e66feac9617017fb",
+        "tests/test_store.py#RecordingLock.__exit__": "b1f1491a2aec36e0",
+        "tests/test_store.py#test_b10_nfr_1_add_holds_the_lock_around_draw_and_append": "00aefd58c3e8e3c0",
+        "tests/test_store.py#test_b10_nfr_1_list_all_takes_the_lock_once": "3a6e0bec7c954952",
+        "tests/test_store.py#test_b10_nfr_1_add_and_list_all_block_while_the_lock_is_held": "6b85086ec7218958"
+      },
+      "sources": [
+        "tests/conftest.py",
+        "tests/test_store.py"
+      ]
+    },
+    "add-item-tests": {
+      "builtAt": "991098f",
+      "hashes": {
+        "tests/test_add_item.py": "a175d7c3d781c308",
+        "tests/test_add_item.py#post_raw": "f9fd9ef8000aeb2d",
+        "tests/test_add_item.py#stored": "93f000a030c449ba",
+        "tests/test_add_item.py#valid": "d2b06000946ffce1",
+        "tests/test_add_item.py#without": "13183cc9c0ac17a9",
+        "tests/test_add_item.py#test_b1_ac_1_1_adds_item_and_returns_201": "ed4e632595e548b1",
+        "tests/test_add_item.py#test_b3_ac_1_2_identical_adds_get_different_ids": "18c869f62bb4319c",
+        "tests/test_add_item.py#test_b4_response_id_is_uuid4": "8e33f4bd1f2d92a5",
+        "tests/test_add_item.py#test_b5_name_is_trimmed": "8e8e9cf504428eee",
+        "tests/test_add_item.py#test_b5_inner_whitespace_is_kept": "9fba1b9754074244",
+        "tests/test_add_item.py#test_b5_single_character_name_is_accepted": "17eb31640a2b7b37",
+        "tests/test_add_item.py#test_b6_dr_4_price_is_returned_as_json_number": "ea27c755ffbf6364",
+        "tests/test_add_item.py#test_b6_dr_4_price_8_5_is_not_rendered_as_string": "50778f76d42b5728",
+        "tests/test_add_item.py#test_b6_two_decimals_accepted_three_rejected": "c96500f1d05a326c",
+        "tests/test_add_item.py#test_b7_dr_5_quantity_accepted_without_upper_limit": "c1d6b4a74bce8fdb",
+        "tests/test_add_item.py#test_b8_ac_1_7_extra_fields_are_ignored": "6c0bdc8d84d06e51",
+        "tests/test_add_item.py#test_b8_ac_1_7_client_id_is_ignored": "8515509fcd56223f",
+        "tests/test_add_item.py#test_b8_extra_fields_ignored_with_every_field_stored_exactly": "9c935aed82fdeb24",
+        "tests/test_add_item.py#assert_rejected": "d46d9b0813b974f4",
+        "tests/test_add_item.py#test_b12_ac_1_3_bad_name_is_rejected": "a129f5e26cb1b502",
+        "tests/test_add_item.py#test_b13_ac_1_4_bad_price_is_rejected": "82442303f7ef395f",
+        "tests/test_add_item.py#test_b13_ac_1_4_missing_price_is_rejected": "e5ddb8ba09657110",
+        "tests/test_add_item.py#test_b13_ac_1_4_non_finite_price_is_rejected": "41b4e1bf85aaa447",
+        "tests/test_add_item.py#test_b14_ac_1_5_bad_quantity_is_rejected": "a30641838165ccd0",
+        "tests/test_add_item.py#test_b14_ac_1_5_missing_quantity_is_rejected": "9aed9f2421f5c8b5",
+        "tests/test_add_item.py#test_b15_ac_1_6_bad_body_is_rejected": "524a7bf62a2ee948",
+        "tests/test_add_item.py#test_b15_ac_1_6_request_without_body": "6b91d7edca2736cd",
+        "tests/test_add_item.py#test_b15_b18_oversized_integer_quantity_is_a_body_error": "5d357d498da8f046",
+        "tests/test_add_item.py#test_b15_b18_oversized_integer_in_ignored_field_is_a_body_error": "fb6ea86577723caa",
+        "tests/test_add_item.py#assert_exact": "5546fc4fb95ead40",
+        "tests/test_add_item.py#test_b16_ac_1_8_exact_message": "0a6845d18d5ca4c5",
+        "tests/test_add_item.py#test_b16_ac_1_8_message_follows_field_must_be_form": "d5438fb341cf881a",
+        "tests/test_add_item.py#test_b16_ac_1_8_body_message_is_exact": "91b841976df72806",
+        "tests/test_add_item.py#test_b16_ac_1_8_request_without_body_message_is_exact": "4156085914f92f13",
+        "tests/test_add_item.py#test_b16_ac_1_8_name_message_is_exact": "efeef189d4616d4a",
+        "tests/test_add_item.py#test_b16_ac_1_8_missing_name_message_is_exact": "98b6e31cbe2759a1",
+        "tests/test_add_item.py#test_b16_ac_1_8_price_message_is_exact": "40f2c8f65b5dc059",
+        "tests/test_add_item.py#test_b16_ac_1_8_missing_price_message_is_exact": "75c764492d3bc26e",
+        "tests/test_add_item.py#test_b16_ac_1_8_non_finite_price_message_is_exact": "b9f329fcc01884a4",
+        "tests/test_add_item.py#test_b16_ac_1_8_quantity_message_is_exact": "8e43517ec5de8652",
+        "tests/test_add_item.py#test_b16_ac_1_8_missing_quantity_message_is_exact": "fbb49ac21aba863e",
+        "tests/test_add_item.py#test_b17_ac_1_8_first_invalid_field_is_named": "a4a5f074cd7b257d",
+        "tests/test_add_item.py#test_b18_ac_1_3_failures_are_400_never_422": "10e420d74dc469ab",
+        "tests/test_add_item.py#test_b18_app_is_a_fastapi_app_with_title_and_error_handler": "36fb12e1df916322",
+        "tests/test_add_item.py#test_b1_module_store_is_a_cart_store_and_receives_posts": "77338875c8e52b15",
+        "tests/test_add_item.py#test_b18_unknown_path_keeps_the_framework_404_shape": "e6790dbd85b5a38e",
+        "tests/test_add_item.py#test_b18_wrong_method_keeps_the_framework_405_shape": "91beec754934e4a7",
+        "tests/test_add_item.py#_probe_client": "1ec0086b68deb67c",
+        "tests/test_add_item.py#test_b18_path_parameter_failure_names_the_parameter": "ae61aa1ea80d48a7",
+        "tests/test_add_item.py#test_b18_query_parameter_failure_names_the_parameter": "4434a2ec219c5a3d"
+      },
+      "sources": [
+        "tests/test_add_item.py"
+      ]
+    }
+  }
+}

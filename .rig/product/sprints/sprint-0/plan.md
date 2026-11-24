@@ -4,21 +4,21 @@
 
 3 intents, 4 engineer-day(s), 3 wave(s). Chart: approved. Intents in the same wave can be built in parallel.
 
-Tasks and the suggested lanes per engineer: [implementation-plan.md](implementation-plan.md). Unassigned: add-item, list-items, view-item (set `owner:` in each intent).
+Tasks and the suggested lanes per engineer: [implementation-plan.md](implementation-plan.md). Unassigned: list-items, view-item (set `owner:` in each intent).
 
 ## Waves
 
 | Wave | Intent | Depends on | Days | Owner | Status |
 |---|---|---|---|---|---|
-| 1 | add-item | - | 2 | - | ready |
-| 2 | view-item | add-item | 1 | - | blocked |
+| 1 | add-item | - | 2 | - | done |
+| 2 | view-item | add-item | 1 | - | ready |
 | 3 | list-items | view-item | 1 | - | blocked |
 
 ## Graph (text)
 
 ```text
-add-item ○ ready
-└─ view-item ✖ blocked
+add-item ✔ done
+└─ view-item ○ ready
    └─ list-items ✖ blocked
 ```
 
@@ -28,9 +28,9 @@ Key: ✔ done, ▶ active, ○ ready, ✖ blocked. An arrow-free tree: each inte
 
 ```mermaid
 graph LR
-  n_add_item["add-item"]:::ready
+  n_add_item["add-item"]:::done
   n_list_items["list-items"]:::blocked
-  n_view_item["view-item"]:::blocked
+  n_view_item["view-item"]:::ready
   n_view_item --> n_list_items
   n_add_item --> n_view_item
   classDef done fill:#d4edda,stroke:#2e7d32
@@ -41,4 +41,4 @@ graph LR
 
 ## Next up
 
-- `/rig:start add-item`
+- `/rig:start view-item`
