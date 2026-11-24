@@ -4,6 +4,7 @@ import inspect
 import threading
 import uuid
 from decimal import Decimal
+from typing import Any, Self, cast
 
 from cart.models import Item
 from cart.store import CartStore
@@ -126,3 +127,70 @@ def test_b10_nfr_1_readers_never_see_a_half_added_item() -> None:
 
     assert bad == []
     assert len(store.list_all()) == 300
+
+
+class RecordingLock:
+    """A duck-typed lock that records the store size at every enter and exit."""
+
+    def __init__(self, store: CartStore) -> None:
+        self.store = store
+        self.enters: list[int] = []
+        self.exits: list[int] = []
+
+    def __enter__(self) -> Self:
+        self.enters.append(len(self.store._items))
+        return self
+
+    def __exit__(self, *exc: object) -> None:
+        self.exits.append(len(self.store._items))
+
+
+def test_b10_nfr_1_add_holds_the_lock_around_draw_and_append() -> None:
+    """B10: add takes the lock once; the append happens while it is held."""
+    store = CartStore()
+    recorder = RecordingLock(store)
+    store._lock = cast(Any, recorder)
+    store.add("Tea", Decimal(1), 1)
+    assert recorder.enters == [0]
+    assert recorder.exits == [1]
+
+
+def test_b10_nfr_1_list_all_takes_the_lock_once() -> None:
+    """B10: list_all acquires the same lock exactly once."""
+    store = CartStore()
+    store.add("Tea", Decimal(1), 1)
+    recorder = RecordingLock(store)
+    store._lock = cast(Any, recorder)
+    assert len(store.list_all()) == 1
+    assert recorder.enters == [1]
+    assert recorder.exits == [1]
+
+
+def test_b10_nfr_1_add_and_list_all_block_while_the_lock_is_held() -> None:
+    """B10: with the store's lock held elsewhere, add and list_all wait for it."""
+    store = CartStore()
+    lock = threading.Lock()
+    store._lock = lock
+    done: list[str] = []
+
+    def do_add() -> None:
+        store.add("Tea", Decimal(1), 1)
+        done.append("add")
+
+    def do_list() -> None:
+        store.list_all()
+        done.append("list")
+
+    lock.acquire()
+    threads = [threading.Thread(target=do_add), threading.Thread(target=do_list)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(0.3)
+    still_alive = [t.is_alive() for t in threads]
+    lock.release()
+    for t in threads:
+        t.join(5)
+    assert still_alive == [True, True]
+    assert all(not t.is_alive() for t in threads)
+    assert sorted(done) == ["add", "list"]

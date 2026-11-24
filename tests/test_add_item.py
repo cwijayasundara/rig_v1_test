@@ -407,3 +407,65 @@ def test_b18_app_is_a_fastapi_app_with_title_and_error_handler() -> None:
     assert cart.main.app.title == "Shopping Cart API"
     response = TestClient(cart.main.app).post("/items", json={})
     assert response.status_code == 400
+
+
+def _big_int() -> str:
+    return "9" * 5000
+
+
+def test_b15_b18_oversized_integer_quantity_is_a_body_error(client: TestClient) -> None:
+    """B15 / B18: a 5000-digit integer cannot be parsed; exact body message, nothing stored."""
+    assert_exact(post_raw(client, '{"name":"Tea","price":1,"quantity":' + _big_int() + "}"), MSG_BODY)
+
+
+def test_b15_b18_oversized_integer_in_ignored_field_is_a_body_error(client: TestClient) -> None:
+    """B15 / B18: the same for an extra field that would be ignored."""
+    content = '{"name":"Tea","price":1,"quantity":1,"x":' + _big_int() + "}"
+    assert_exact(post_raw(client, content), MSG_BODY)
+
+
+def test_b18_unknown_path_keeps_the_framework_404_shape(client: TestClient) -> None:
+    """B18 / Q1: 404 stays FastAPI's default body."""
+    response = client.get("/nope")
+    assert response.status_code == 404
+    assert "detail" in response.json()
+    assert "error" not in response.json()
+
+
+def test_b18_wrong_method_keeps_the_framework_405_shape(client: TestClient) -> None:
+    """B18 / Q1: 405 stays FastAPI's default body."""
+    response = client.delete("/items")
+    assert response.status_code == 405
+    assert "detail" in response.json()
+    assert "error" not in response.json()
+
+
+def _probe_client() -> TestClient:
+    from cart.errors import register_error_handlers
+
+    probe = FastAPI()
+    register_error_handlers(probe)
+
+    @probe.get("/probe/{n}")
+    def probe_n(n: int) -> dict[str, int]:
+        return {"n": n}
+
+    @probe.get("/q")
+    def probe_q(name: int) -> dict[str, int]:
+        return {"name": name}
+
+    return TestClient(probe)
+
+
+def test_b18_path_parameter_failure_names_the_parameter() -> None:
+    """B18: a non-body location is named by its own parameter, as 400."""
+    response = _probe_client().get("/probe/abc")
+    assert response.status_code == 400
+    assert response.json() == {"error": "validation_error", "message": "n is invalid"}
+
+
+def test_b18_query_parameter_failure_names_the_parameter() -> None:
+    """B18: a query failure says 'name is invalid', not the body name message."""
+    response = _probe_client().get("/q", params={"name": "x"})
+    assert response.status_code == 400
+    assert response.json() == {"error": "validation_error", "message": "name is invalid"}
