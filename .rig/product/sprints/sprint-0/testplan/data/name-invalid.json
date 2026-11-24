@@ -1,0 +1,9 @@
+{
+  "raw": [
+    "{\"price\":3,\"quantity\":1}",
+    "{\"name\":5,\"price\":3,\"quantity\":1}",
+    "{\"name\":null,\"price\":3,\"quantity\":1}",
+    "{\"name\":\"\",\"price\":3,\"quantity\":1}",
+    "{\"name\":\"   \",\"price\":3,\"quantity\":1}"
+  ]
+}

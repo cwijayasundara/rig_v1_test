@@ -1,0 +1,9 @@
+[
+  {
+    "finding": 1,
+    "text_sha": "d5f48dc3570bab6f",
+    "by": "cwijayasundaragmail.com",
+    "at": "2026-11-24T09:54:20.000Z",
+    "reason": "framework 404/405 defaults are acceptable for sprint 0"
+  }
+]

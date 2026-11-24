@@ -1,0 +1,7 @@
+{
+  "ids": [
+    "does-not-exist",
+    "3f2b8c1e-6d1a-4c53-9a7e-0b5d2f6c8e11"
+  ],
+  "expected_message": "Item does-not-exist not found"
+}

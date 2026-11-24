@@ -1,0 +1,12 @@
+{
+  "raw": [
+    "{\"name\":\"Tea\",\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":\"8.50\",\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":null,\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":true,\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":-0.01,\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":8.505,\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":NaN,\"quantity\":1}",
+    "{\"name\":\"Tea\",\"price\":Infinity,\"quantity\":1}"
+  ]
+}

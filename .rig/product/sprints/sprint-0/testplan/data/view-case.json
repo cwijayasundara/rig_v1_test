@@ -1,0 +1,8 @@
+{
+  "body": {
+    "name": "Tea",
+    "price": 3,
+    "quantity": 1
+  },
+  "note": "look up the held id in upper case: expect 404"
+}

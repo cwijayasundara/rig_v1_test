@@ -1,0 +1,10 @@
+{
+  "body": {
+    "name": "Coffee beans",
+    "price": 8.5,
+    "quantity": 2
+  },
+  "expect": {
+    "status": 201
+  }
+}

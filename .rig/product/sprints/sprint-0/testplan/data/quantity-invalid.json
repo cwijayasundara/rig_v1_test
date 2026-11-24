@@ -1,0 +1,10 @@
+{
+  "raw": [
+    "{\"name\":\"Tea\",\"price\":3}",
+    "{\"name\":\"Tea\",\"price\":3,\"quantity\":8.0}",
+    "{\"name\":\"Tea\",\"price\":3,\"quantity\":\"2\"}",
+    "{\"name\":\"Tea\",\"price\":3,\"quantity\":true}",
+    "{\"name\":\"Tea\",\"price\":3,\"quantity\":0}",
+    "{\"name\":\"Tea\",\"price\":3,\"quantity\":-1}"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "body": {
+    "name": "Tea",
+    "price": 3,
+    "quantity": 1
+  },
+  "unknown_id": "missing",
+  "expect_list_all_equal_before_and_after_get": true
+}

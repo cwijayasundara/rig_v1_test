@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "raw": "{\"name\":\"Tea\",\"price\":3,\"quantity\":0}",
+      "message": "quantity must be an integer of at least 1"
+    },
+    {
+      "raw": "{\"name\":\"\",\"price\":-1,\"quantity\":0}",
+      "first_field": "name"
+    },
+    {
+      "raw": "{\"name\":\"Tea\",\"price\":8.505,\"quantity\":0}",
+      "first_field": "price"
+    }
+  ]
+}
