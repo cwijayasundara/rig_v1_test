@@ -6,9 +6,11 @@ from decimal import Decimal
 from typing import Any
 
 import pytest
+from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 import cart.main
+from cart.store import CartStore
 
 JSON = {"content-type": "application/json"}
 
@@ -279,3 +281,129 @@ def test_b18_ac_1_3_failures_are_400_never_422(client: TestClient, content: str)
     assert body["error"] == "validation_error"
     assert isinstance(body["message"], str)
     assert body["message"] != ""
+
+
+MSG_NAME = "name must be a non-empty string"
+MSG_PRICE = "price must be a number of at least 0 with at most 2 decimal places"
+MSG_QUANTITY = "quantity must be an integer of at least 1"
+MSG_BODY = "body must be a JSON object"
+
+
+def assert_exact(response: Any, message: str) -> None:
+    assert response.status_code == 400
+    assert response.json() == {"error": "validation_error", "message": message}
+    assert stored() == []
+
+
+@pytest.mark.parametrize(
+    "content",
+    ["{not json", "", "[]", '"x"', "5", "null", '{"name": "Tea",', "[1, 2]"],
+    ids=repr,
+)
+def test_b16_ac_1_8_body_message_is_exact(client: TestClient, content: str) -> None:
+    """B16 / B15: every body rejection carries the exact body message."""
+    assert_exact(post_raw(client, content), MSG_BODY)
+
+
+def test_b16_ac_1_8_request_without_body_message_is_exact(client: TestClient) -> None:
+    """B16 / B15: a POST with no body gets the exact body message."""
+    assert_exact(client.post("/items"), MSG_BODY)
+
+
+@pytest.mark.parametrize("name", [5, None, "", "   ", True, ["Tea"], {"a": 1}], ids=repr)
+def test_b16_ac_1_8_name_message_is_exact(client: TestClient, name: Any) -> None:
+    """B16 / B12: every bad name gets the exact name message."""
+    assert_exact(client.post("/items", json=valid(name=name)), MSG_NAME)
+
+
+def test_b16_ac_1_8_missing_name_message_is_exact(client: TestClient) -> None:
+    """B16 / B12: missing name gets the exact name message."""
+    assert_exact(client.post("/items", json=without("name")), MSG_NAME)
+
+
+@pytest.mark.parametrize(
+    "price", ["8.50", "3", "", None, True, False, -0.01, 8.505, -1, 1.001, [], {}], ids=repr
+)
+def test_b16_ac_1_8_price_message_is_exact(client: TestClient, price: Any) -> None:
+    """B16 / B13: every bad price (str and bool included) gets the exact price message."""
+    assert_exact(client.post("/items", json=valid(price=price)), MSG_PRICE)
+
+
+def test_b16_ac_1_8_missing_price_message_is_exact(client: TestClient) -> None:
+    """B16 / B13: missing price gets the exact price message."""
+    assert_exact(client.post("/items", json=without("price")), MSG_PRICE)
+
+
+@pytest.mark.parametrize("token", ["NaN", "Infinity", "-Infinity"])
+def test_b16_ac_1_8_non_finite_price_message_is_exact(client: TestClient, token: str) -> None:
+    """B16 / B13: NaN and Infinity get the exact price message."""
+    response = post_raw(client, '{"name": "Tea", "price": ' + token + ', "quantity": 1}')
+    assert_exact(response, MSG_PRICE)
+
+
+@pytest.mark.parametrize("quantity", [8.0, "2", True, 0, -1, None, 1.5], ids=repr)
+def test_b16_ac_1_8_quantity_message_is_exact(client: TestClient, quantity: Any) -> None:
+    """B16 / B14: every bad quantity gets the exact quantity message."""
+    assert_exact(client.post("/items", json=valid(quantity=quantity)), MSG_QUANTITY)
+
+
+def test_b16_ac_1_8_missing_quantity_message_is_exact(client: TestClient) -> None:
+    """B16 / B14: missing quantity gets the exact quantity message."""
+    assert_exact(client.post("/items", json=without("quantity")), MSG_QUANTITY)
+
+
+def test_b5_single_character_name_is_accepted(client: TestClient) -> None:
+    """B5: one character is a valid name; a padded one is trimmed to it."""
+    assert client.post("/items", json=valid(name="A")).json()["name"] == "A"
+    assert client.post("/items", json=valid(name=" B ")).json()["name"] == "B"
+
+
+def test_b6_price_zero_is_stored_as_decimal_zero(client: TestClient) -> None:
+    """B6: price 0 is allowed and held as Decimal."""
+    response = client.post("/items", json=valid(price=0))
+    assert response.status_code == 201
+    assert response.json()["price"] == 0
+    assert stored()[0].price == Decimal(0)
+
+
+def test_b6_two_decimals_accepted_three_rejected(client: TestClient) -> None:
+    """B6: exactly 2 decimals pass, 3 do not."""
+    ok = post_raw(client, '{"name":"Tea","price":1.25,"quantity":1}')
+    assert ok.status_code == 201
+    assert stored()[0].price == Decimal("1.25")
+    bad = post_raw(client, '{"name":"Tea","price":1.255,"quantity":1}')
+    assert bad.status_code == 400
+    assert bad.json()["message"] == MSG_PRICE
+    assert len(stored()) == 1
+
+
+def test_b8_extra_fields_ignored_with_every_field_stored_exactly(client: TestClient) -> None:
+    """B8: extras never reach the stored item or break the message of a real error."""
+    ok = client.post("/items", json=valid(extra={"x": 1}, id=7, note="n"))
+    assert ok.status_code == 201
+    assert set(ok.json()) == {"id", "name", "price", "quantity"}
+    bad = client.post("/items", json=valid(quantity=0, extra=1))
+    assert bad.status_code == 400
+    assert bad.json()["message"] == MSG_QUANTITY
+
+
+def test_b1_module_store_is_a_cart_store_and_receives_posts() -> None:
+    """B1 / B2: without the fixture swap the module store is a real CartStore."""
+    module_store = cart.main.store
+    assert isinstance(module_store, CartStore)
+    before = len(module_store.list_all())
+    plain = TestClient(cart.main.app)
+    response = plain.post("/items", json=valid(name="Plain"))
+    assert response.status_code == 201
+    items = module_store.list_all()
+    assert len(items) == before + 1
+    assert items[-1].id == response.json()["id"]
+    module_store._items.pop()
+
+
+def test_b18_app_is_a_fastapi_app_with_title_and_error_handler() -> None:
+    """B18: the module app is the configured FastAPI app and answers 400, not 422."""
+    assert isinstance(cart.main.app, FastAPI)
+    assert cart.main.app.title == "Shopping Cart API"
+    response = TestClient(cart.main.app).post("/items", json={})
+    assert response.status_code == 400
