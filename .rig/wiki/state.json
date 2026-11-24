@@ -26,12 +26,12 @@
       ]
     },
     "http-api": {
-      "builtAt": "991098f",
+      "builtAt": "4043a3c",
       "hashes": {
-        "src/cart/main.py": "a3f2548468c3674d",
-        "src/cart/__init__.py": "e3b0c44298fc1c14",
+        "src/cart/main.py": "cfbdbb2e85afd9be",
         "src/cart/main.py#add_item": "cd8d82e9d3144776",
-        "src/cart/main.py#list_items": "24971304a073eeb1"
+        "src/cart/main.py#list_items": "24971304a073eeb1",
+        "src/cart/main.py#get_item": "6b893b0f4726fd85"
       },
       "sources": [
         "src/cart/__init__.py",
@@ -145,6 +145,127 @@
       },
       "sources": [
         "tests/test_add_item.py"
+      ]
+    },
+    "cart-store": {
+      "builtAt": "4043a3c",
+      "hashes": {
+        "src/cart/store.py": "5692fc47383f3590",
+        "src/cart/store.py#CartStore": "89ae80a51be7db67",
+        "src/cart/store.py#CartStore.__init__": "be9be05f920e34ce",
+        "src/cart/store.py#CartStore.add": "29672b0769a634d7",
+        "src/cart/store.py#CartStore.get": "1ce767479277b117",
+        "src/cart/store.py#CartStore.list_all": "f477fb13de38db67"
+      },
+      "sources": [
+        "src/cart/store.py"
+      ]
+    },
+    "error-handling": {
+      "builtAt": "4043a3c",
+      "hashes": {
+        "src/cart/errors.py#ItemNotFoundError": "f2248aca26914a6f",
+        "src/cart/errors.py#ItemNotFoundError.__init__": "641b659f8f59f5ba",
+        "src/cart/main.py#get_item": "6b893b0f4726fd85",
+        "src/cart/errors.py#register_error_handlers": "96f7be4d5e41f6bb",
+        "src/cart/main.py": "cfbdbb2e85afd9be",
+        "src/cart/errors.py#_error_response": "acdb9123d33aedae",
+        "src/cart/errors.py#_validation_handler": "e873ca26ba1a9346",
+        "src/cart/errors.py": "f35fc88d8d2f6ce8",
+        "src/cart/errors.py#_http_handler": "08ab862582d8063d",
+        "src/cart/errors.py#_not_found_handler": "c6de4bf69b66c0da",
+        "src/cart/errors.py#_validation_message": "8dadc95fa95bd0d7"
+      },
+      "sources": [
+        "src/cart/errors.py",
+        "src/cart/main.py"
+      ]
+    },
+    "add-item-flow": {
+      "builtAt": "4043a3c",
+      "hashes": {
+        "src/cart/main.py#add_item": "cd8d82e9d3144776",
+        "src/cart/main.py": "cfbdbb2e85afd9be",
+        "src/cart/models.py#ItemCreate": "fc788fc81c382940",
+        "src/cart/store.py#CartStore.add": "29672b0769a634d7",
+        "src/cart/errors.py#_validation_handler": "e873ca26ba1a9346",
+        "src/cart/errors.py#_error_response": "acdb9123d33aedae",
+        "src/cart/models.py#Item": "eafb27abcf02ddb9",
+        "src/cart/models.py": "0b178c61ea8b10a1",
+        "src/cart/models.py#_reject_non_numbers": "3a94d84b664f3f00",
+        "src/cart/store.py#CartStore.list_all": "f477fb13de38db67",
+        "src/cart/errors.py#register_error_handlers": "96f7be4d5e41f6bb",
+        "src/cart/errors.py#_validation_message": "8dadc95fa95bd0d7",
+        "src/cart/errors.py#_http_handler": "08ab862582d8063d",
+        "src/cart/store.py#CartStore.get": "1ce767479277b117",
+        "src/cart/errors.py#_not_found_handler": "c6de4bf69b66c0da"
+      },
+      "sources": [
+        "src/cart/errors.py",
+        "src/cart/main.py",
+        "src/cart/models.py",
+        "src/cart/store.py",
+        "tests/test_add_item.py"
+      ]
+    },
+    "testing-guide": {
+      "builtAt": "4043a3c",
+      "hashes": {
+        "tests/conftest.py": "cce03baebdb5396f",
+        "tests/conftest.py#client": "3ad15488bb6ee3e6",
+        "tests/test_api.py#test_smoke_empty_cart_lists_nothing": "7bc06c9daa29543b",
+        "tests/test_add_item.py": "a175d7c3d781c308",
+        "tests/test_store.py": "aace11e0791a04c8",
+        "tests/test_view_item.py": "506c242fa1ba94a6",
+        "tests/test_api.py": "551b67c8508482f2",
+        "tests/test_add_item.py#test_b16_ac_1_8_exact_message": "0a6845d18d5ca4c5",
+        "tests/test_store.py#test_b4_dr_2_id_is_canonical_uuid4": "2e2421a5890fcca3",
+        "tests/test_add_item.py#post_raw": "f9fd9ef8000aeb2d",
+        "tests/test_add_item.py#stored": "93f000a030c449ba",
+        "tests/test_add_item.py#valid": "d2b06000946ffce1",
+        "tests/test_add_item.py#without": "13183cc9c0ac17a9",
+        "tests/test_add_item.py#assert_rejected": "d46d9b0813b974f4",
+        "tests/test_add_item.py#assert_exact": "5546fc4fb95ead40",
+        "tests/test_add_item.py#test_b1_ac_1_1_adds_item_and_returns_201": "ed4e632595e548b1",
+        "tests/test_add_item.py#test_b8_ac_1_7_client_id_is_ignored": "8515509fcd56223f",
+        "tests/test_add_item.py#test_b5_inner_whitespace_is_kept": "9fba1b9754074244",
+        "tests/test_add_item.py#test_b6_dr_4_price_8_5_is_not_rendered_as_string": "50778f76d42b5728",
+        "tests/test_add_item.py#test_b7_dr_5_quantity_accepted_without_upper_limit": "c1d6b4a74bce8fdb",
+        "tests/test_add_item.py#test_b18_ac_1_3_failures_are_400_never_422": "10e420d74dc469ab",
+        "tests/test_add_item.py#test_b17_ac_1_8_first_invalid_field_is_named": "a4a5f074cd7b257d",
+        "tests/test_add_item.py#test_b15_b18_oversized_integer_quantity_is_a_body_error": "5d357d498da8f046",
+        "tests/test_add_item.py#test_b18_unknown_path_keeps_the_framework_404_shape": "e6790dbd85b5a38e",
+        "tests/test_add_item.py#_probe_client": "1ec0086b68deb67c",
+        "tests/test_add_item.py#test_b1_module_store_is_a_cart_store_and_receives_posts": "77338875c8e52b15",
+        "tests/test_store.py#test_b4_dr_2_ids_are_distinct_across_adds": "7145a06ee504fc7f",
+        "tests/test_store.py#test_b4_dr_2_client_cannot_supply_an_id": "33afe7ca38053124",
+        "tests/test_store.py#test_list_all_is_oldest_first": "4003778f72a4dcc4",
+        "tests/test_store.py#test_b10_nfr_1_list_all_returns_a_copy": "63a930a6feba69bc",
+        "tests/test_store.py#test_b9_nfr_1_hundred_concurrent_adds_lose_nothing": "65a92aa96f7dc097",
+        "tests/test_store.py#test_b10_nfr_1_readers_never_see_a_half_added_item": "0bffefd84df360fa",
+        "tests/test_store.py#RecordingLock": "3cbf863fcd84947b",
+        "tests/test_store.py#RecordingLock.__enter__": "e66feac9617017fb",
+        "tests/test_store.py#RecordingLock.__exit__": "b1f1491a2aec36e0",
+        "tests/test_store.py#test_b10_nfr_1_add_holds_the_lock_around_draw_and_append": "00aefd58c3e8e3c0",
+        "tests/test_store.py#test_b10_nfr_1_add_and_list_all_block_while_the_lock_is_held": "6b85086ec7218958",
+        "tests/test_view_item.py#create": "db1f7a06005c2e1c",
+        "tests/test_view_item.py#test_b1_ac_2_1_get_returns_the_created_item": "8e8308441910559f",
+        "tests/test_view_item.py#test_b2_ac_2_2_unknown_id_is_404_not_found": "e297ee0af6803549",
+        "tests/test_view_item.py#test_b3_ac_2_2_store_get_raises_for_unknown_id": "031ccd0035666a4f",
+        "tests/test_view_item.py#test_b4_ac_2_1_lookup_is_case_sensitive": "db2915c99e4d9c9d",
+        "tests/test_view_item.py#test_b5_ac_2_1_get_returns_added_item_and_leaves_cart_unchanged": "0f90a67c9a1845bf",
+        "tests/test_view_item.py#test_b5_ac_2_1_get_waits_for_the_store_lock": "f2a5bbe4c692501b",
+        "tests/test_view_item.py#test_b6_ac_2_2_non_uuid_id_is_404_not_found": "58fba205a2cca5d3",
+        "tests/test_view_item.py#test_b7_c1_errors_module_has_no_assert_statement": "a831a16861b23bae",
+        "tests/test_view_item.py#test_b7_c1_invalid_post_body_still_400_validation_error": "6fc6f2fadf9b2b5d",
+        "tests/test_store.py#test_b4_returned_item_is_the_stored_item": "842e9cd2edb5b335"
+      },
+      "sources": [
+        "tests/conftest.py",
+        "tests/test_add_item.py",
+        "tests/test_api.py",
+        "tests/test_store.py",
+        "tests/test_view_item.py"
       ]
     }
   }

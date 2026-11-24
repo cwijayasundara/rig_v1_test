@@ -1,0 +1,26 @@
+[
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/store.py",
+    "status": "ok",
+    "detail": "src/cart/store.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/errors.py",
+    "status": "ok",
+    "detail": "src/cart/errors.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/main.py",
+    "status": "ok",
+    "detail": "src/cart/main.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists tests/test_view_item.py",
+    "status": "ok",
+    "detail": "tests/test_view_item.py changed"
+  }
+]
