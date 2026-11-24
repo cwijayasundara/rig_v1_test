@@ -1,0 +1,80 @@
+[
+  {
+    "rule": "C1",
+    "claim": "finding cites src/cart/models.py:26",
+    "status": "ok",
+    "detail": "src/cart/models.py:26 exists"
+  },
+  {
+    "rule": "C1",
+    "claim": "finding cites src/cart/models.py:24",
+    "status": "ok",
+    "detail": "src/cart/models.py:24 exists"
+  },
+  {
+    "rule": "C1",
+    "claim": "finding cites src/cart/store.py:20",
+    "status": "ok",
+    "detail": "src/cart/store.py:20 exists"
+  },
+  {
+    "rule": "C2",
+    "claim": "src/cart/errors.py:24 marked fixed",
+    "status": "skipped",
+    "detail": "no review stamp for src/cart/errors.py"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/models.py",
+    "status": "ok",
+    "detail": "src/cart/models.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/store.py",
+    "status": "ok",
+    "detail": "src/cart/store.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/errors.py",
+    "status": "ok",
+    "detail": "src/cart/errors.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists src/cart/main.py",
+    "status": "ok",
+    "detail": "src/cart/main.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists tests/conftest.py",
+    "status": "ok",
+    "detail": "tests/conftest.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists tests/test_add_item.py",
+    "status": "ok",
+    "detail": "tests/test_add_item.py changed"
+  },
+  {
+    "rule": "C3",
+    "claim": "plan lists tests/test_store.py",
+    "status": "ok",
+    "detail": "tests/test_store.py changed"
+  },
+  {
+    "rule": "C4",
+    "claim": "- A1 (B15, B18): a body Python's JSON limits cannot parse (for example an integer of 4301+ digits) is also answered 400 validation_error naming body. Found by the security review.",
+    "status": "ok",
+    "detail": "cites behaviours spec.md has"
+  },
+  {
+    "rule": "C4",
+    "claim": "- A2 (B18): a validation error on a path or query parameter is answered 400 validation_error \"<param> is invalid\", not with a body message. Found by the code review.",
+    "status": "ok",
+    "detail": "cites behaviours spec.md has"
+  }
+]
